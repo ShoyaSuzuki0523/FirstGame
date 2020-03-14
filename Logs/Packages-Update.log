@@ -41,3 +41,11 @@ The following packages were 追加済:
   com.unity.modules.vr@1.0.0
   com.unity.modules.wind@1.0.0
   com.unity.modules.xr@1.0.0
+
+=== Sat Mar 14 19:32:37 2020
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were 更新済:
+  com.unity.analytics をバージョン 3.2.2 から 3.2.3 へ

@@ -12,7 +12,7 @@ public class CharaMover : MonoBehaviour
   }
 
   // Update is called once per frame
-  void Update()
+  void FixedUpdate()
   {
     if(Input.GetKey(KeyCode.W)){
       transform.position += transform.forward * 0.03f;

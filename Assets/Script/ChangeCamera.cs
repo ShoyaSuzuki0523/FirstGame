@@ -17,7 +17,9 @@ public class ChangeCamera : MonoBehaviour
   }
 
   void OnTriggerStay(Collider other){
-    Camera.enabled = true;
+    if(other.CompareTag("Player")){
+      Camera.enabled = true;
+    }
   }
 
   void OnTriggerExit(Collider other){
