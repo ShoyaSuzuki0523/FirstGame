@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - GameCamera
+  - Door
   layers:
   - Default
   - TransparentFX
