@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GameCamera
   - Door
+  - GameGuide
   layers:
   - Default
   - TransparentFX
