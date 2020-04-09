@@ -7,10 +7,10 @@ using UnityEngine.UI;
 public class DoorOpener : MonoBehaviour
 {
     private bool isNear;
+    private bool isOpen = false;
     private Animator animator;
+    private GameObject game_guide_object = null;
     public GameObject go;
-
-    public GameObject game_guide_object = null;
 
     void Start()
     {
@@ -22,6 +22,9 @@ public class DoorOpener : MonoBehaviour
     void Update() {
         if (Input.GetKeyDown("space") && isNear) {
             animator.SetBool("OPEN", !animator.GetBool("OPEN"));
+            isOpen = !isOpen;
+            Text game_guide_text = game_guide_object.GetComponent<Text> ();
+            game_guide_text.text = state(isOpen);
         }
     }
 
@@ -29,7 +32,7 @@ public class DoorOpener : MonoBehaviour
         if (col.tag == "Player") {
             isNear = true;
             Text game_guide_text = game_guide_object.GetComponent<Text> ();
-            game_guide_text.text = "OPEN";
+            game_guide_text.text = state(isOpen);
         }
     }
  
@@ -38,6 +41,13 @@ public class DoorOpener : MonoBehaviour
             isNear = false;
             Text game_guide_text = game_guide_object.GetComponent<Text> ();
             game_guide_text.text = "";
+        }
+    }
+    string state(bool isOpen){
+        if(isOpen){
+            return "閉める";
+        }else{
+            return "開ける";
         }
     }
 }
