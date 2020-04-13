@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.Threading.Tasks;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class ItemFlag : MonoBehaviour
     private bool isNear;
     private bool isOpen = false;
     private GameObject game_guide_object = null;
+    private string text;
 
     void Start()
     {
@@ -16,11 +18,16 @@ public class ItemFlag : MonoBehaviour
         game_guide_object = GameObject.FindGameObjectWithTag("GameGuide");
     }
 
-    void Update() {
+    async void Update() {
         if (Input.GetKeyDown("space") && isNear) {
             isOpen = true;
             Text game_guide_text = game_guide_object.GetComponent<Text> ();
-            game_guide_text.text = state(isOpen);
+            text = state(isOpen);
+			game_guide_text.text = "";
+            foreach(var t in text){
+            	game_guide_text.text += t;
+				await Task.Delay(50);
+            }
         }
     }
 
