@@ -10,12 +10,16 @@ public class ItemFlag : MonoBehaviour
     private bool isNear;
     private bool isOpen = false;
     private GameObject game_guide_object = null;
+	private GameObject Jimaku_object = null;
+	private JimakuScript js;
     private string text;
 
     void Start()
     {
         isNear = false;
         game_guide_object = GameObject.FindGameObjectWithTag("GameGuide");
+		Jimaku_object = GameObject.FindGameObjectWithTag("Jimaku");
+		js = Jimaku_object.GetComponent<JimakuScript> ();
     }
 
     async void Update() {
@@ -24,10 +28,8 @@ public class ItemFlag : MonoBehaviour
             Text game_guide_text = game_guide_object.GetComponent<Text> ();
             text = state(isOpen);
 			game_guide_text.text = "";
-            foreach(var t in text){
-            	game_guide_text.text += t;
-				await Task.Delay(50);
-            }
+			js.JimakuText("アイテムを入手した。");
+			gameObject.SetActive (false);
         }
     }
 
