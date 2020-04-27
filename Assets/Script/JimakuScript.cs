@@ -9,6 +9,7 @@ public class JimakuScript : MonoBehaviour
 {
 	private Text Jimaku_text;
 	private bool isRunning = false;
+	private CharaMover CharaMover;
 
 	public int text_speed = 50;
 
@@ -16,6 +17,7 @@ public class JimakuScript : MonoBehaviour
     void Start()
     {
         Jimaku_text = GetComponent<Text>();
+		CharaMover = GameObject.FindGameObjectWithTag("Player").GetComponent<CharaMover>();
     }
 
     // Update is called once per frame

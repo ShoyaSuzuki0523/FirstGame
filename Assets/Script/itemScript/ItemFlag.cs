@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class ItemFlag : MonoBehaviour
 {
     private bool isNear;
-    private bool isOpen = false;
     private GameObject game_guide_object = null;
 	private GameObject Jimaku_object = null;
 	private JimakuScript js;
@@ -24,9 +23,7 @@ public class ItemFlag : MonoBehaviour
 
     async void Update() {
         if (Input.GetKeyDown("space") && isNear) {
-            isOpen = true;
             Text game_guide_text = game_guide_object.GetComponent<Text> ();
-            text = state(isOpen);
 			game_guide_text.text = "";
 			js.JimakuText("アイテムを入手した。");
 			gameObject.SetActive (false);
@@ -37,7 +34,7 @@ public class ItemFlag : MonoBehaviour
         if (col.tag == "Player") {
             isNear = true;
             Text game_guide_text = game_guide_object.GetComponent<Text> ();
-            game_guide_text.text = state(isOpen);
+            game_guide_text.text = "拾う";
         }
     }
  
@@ -46,13 +43,6 @@ public class ItemFlag : MonoBehaviour
             isNear = false;
             Text game_guide_text = game_guide_object.GetComponent<Text> ();
             game_guide_text.text = "";
-        }
-    }
-    string state(bool isOpen){
-        if(isOpen){
-            return "すでに持っている";
-        }else{
-            return "拾う";
         }
     }
 }

@@ -8,6 +8,7 @@ TagManager:
   - Door
   - GameGuide
   - Fire
+  - Jimaku
   layers:
   - Default
   - TransparentFX
