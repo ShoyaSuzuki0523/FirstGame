@@ -9,6 +9,7 @@ TagManager:
   - GameGuide
   - Fire
   - Jimaku
+  - ItemDataBase
   layers:
   - Default
   - TransparentFX

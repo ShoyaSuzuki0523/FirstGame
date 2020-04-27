@@ -15,10 +15,8 @@ public class CharaMover : MonoBehaviour
 	// Update is called once per frame
 	void FixedUpdate()
 	{
-		if(!CanMove && Input.GetKeyDown(KeyCode.E)){
-			CanMove = true;
-		}else if(CanMove && Input.GetKeyDown(KeyCode.E)){
-			CanMove = false;
+		if(Input.GetKeyDown(KeyCode.E)){
+			toggleCanMove();
 		}
 
 		if(CanMove){
@@ -51,6 +49,16 @@ public class CharaMover : MonoBehaviour
 			if(Input.GetKey(KeyCode.A)){
 			transform.Rotate(0, -3, 0);
 			}
+		}
+	}
+
+	void toggleCanMove(){
+		if(!CanMove){
+			CanMove = true;
+		}else if(CanMove){
+			CanMove = false;
+		}else{
+			Debug.Log("ERROR: CanMove is crashed.");
 		}
 	}
 }

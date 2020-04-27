@@ -8,14 +8,18 @@ using UnityEngine.UI;
 public class ItemFlag : MonoBehaviour
 {
     private bool isNear;
+    private ItemDataBase idb = null;
     private GameObject game_guide_object = null;
 	private GameObject Jimaku_object = null;
 	private JimakuScript js;
     private string text;
 
+    public Item item;
+   
     void Start()
     {
         isNear = false;
+        idb = GameObject.FindGameObjectWithTag("ItemDataBase").GetComponent<ItemDataBase>();
         game_guide_object = GameObject.FindGameObjectWithTag("GameGuide");
 		Jimaku_object = GameObject.FindGameObjectWithTag("Jimaku");
 		js = Jimaku_object.GetComponent<JimakuScript> ();
@@ -23,9 +27,12 @@ public class ItemFlag : MonoBehaviour
 
     async void Update() {
         if (Input.GetKeyDown("space") && isNear) {
+            //データベースにアイテムを登録
+            idb.setItem(item);
+            //テキストを表示
             Text game_guide_text = game_guide_object.GetComponent<Text> ();
 			game_guide_text.text = "";
-			js.JimakuText("アイテムを入手した。");
+			js.JimakuText($"\"{item.name}\"を入手した。");
 			gameObject.SetActive (false);
         }
     }

@@ -5,10 +5,10 @@ using System.Collections;
 [System.Serializable]
 public class Item 
 {
-    public int itemID;
-    public string itemName;
-    public string itemDesc;
-    public ItemType itemType;
+    public int id;
+    public string name;
+    public string desc;
+    public ItemType type;
    
     public enum ItemType
     {
@@ -16,12 +16,12 @@ public class Item
         Document,
     }
 
-	public Item(int id, string name, string desc, ItemType type)
+	public Item(int i, string n, string d, ItemType t)
     {
-        itemID = id;
-        itemName = name;
-        itemDesc = desc;
-        itemType = type;
+        id = i;
+        name = n;
+        desc = d;
+        type = t;
     }
 
 }
