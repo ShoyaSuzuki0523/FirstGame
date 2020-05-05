@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class DoorOpener : MonoBehaviour
 {
+    private KeyConfig kc;
     private bool isNear;
     private bool isOpen = false;
     private Animator animator;
@@ -17,10 +18,11 @@ public class DoorOpener : MonoBehaviour
         isNear = false;
         animator = go.GetComponent<Animator>();
         game_guide_object = GameObject.FindGameObjectWithTag("GameGuide");
+        kc = GameObject.FindGameObjectWithTag("KeyConfig").GetComponent<KeyConfig>();
     }
 
     void Update() {
-        if (Input.GetKeyDown("space") && isNear) {
+        if (Input.GetKeyDown(kc.action) && isNear) {
             animator.SetBool("OPEN", !animator.GetBool("OPEN"));
             isOpen = !isOpen;
             Text game_guide_text = game_guide_object.GetComponent<Text> ();

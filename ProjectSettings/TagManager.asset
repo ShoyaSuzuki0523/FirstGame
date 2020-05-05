@@ -10,6 +10,11 @@ TagManager:
   - Fire
   - Jimaku
   - ItemDataBase
+  - KeyConfig
+  - GameUI
+  - MenuUI
+  - BGColor
+  - MainPanel
   layers:
   - Default
   - TransparentFX

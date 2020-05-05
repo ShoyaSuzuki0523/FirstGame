@@ -12,6 +12,10 @@ public class ItemDataBase : MonoBehaviour
         items.Add(new Item(1,"サンプル資料","これはテスト用の資料です。",Item.ItemType.Document));
     }
 
+    public List<Item> getItemList(){
+        return items;
+    }
+
     public Item getItem(int i){
         return items[i];
     }

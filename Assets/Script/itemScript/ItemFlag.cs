@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class ItemFlag : MonoBehaviour
 {
+    private KeyConfig kc;
     private bool isNear;
     private ItemDataBase idb = null;
     private GameObject game_guide_object = null;
@@ -18,6 +19,7 @@ public class ItemFlag : MonoBehaviour
    
     void Start()
     {
+        kc = GameObject.FindGameObjectWithTag("KeyConfig").GetComponent<KeyConfig>();
         isNear = false;
         idb = GameObject.FindGameObjectWithTag("ItemDataBase").GetComponent<ItemDataBase>();
         game_guide_object = GameObject.FindGameObjectWithTag("GameGuide");
@@ -26,7 +28,7 @@ public class ItemFlag : MonoBehaviour
     }
 
     async void Update() {
-        if (Input.GetKeyDown("space") && isNear) {
+        if (Input.GetKeyDown(kc.action) && isNear) {
             //データベースにアイテムを登録
             idb.setItem(item);
             //テキストを表示
