@@ -29,16 +29,4 @@ public class UImanager : MonoBehaviour
             MainPanel.SetActive (!MainPanel.activeSelf);
         }
     }
-
-    // public void MenuToggle(bool bl){
-    //     if(bl){
-    //         cm.enabled = true;
-    //         BGColor.SetActive (false);
-    //         MainPanel.SetActive (false);
-    //     }else{
-    //         //cm.enabled = false;
-    //         BGColor.SetActive (true);
-    //         MainPanel.SetActive (true);
-    //     }
-    // }
 }

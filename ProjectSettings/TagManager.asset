@@ -15,6 +15,9 @@ TagManager:
   - MenuUI
   - BGColor
   - MainPanel
+  - ItemName
+  - ItemDesc
+  - ItemList
   layers:
   - Default
   - TransparentFX

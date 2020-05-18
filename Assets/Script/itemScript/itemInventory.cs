@@ -13,12 +13,6 @@ public class itemInventory : MonoBehaviour
         idb = GameObject.FindGameObjectWithTag("ItemDataBase").GetComponent<ItemDataBase>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void addItem(int itemId){
         inventory.Add(idb.getItem(itemId));
     }
