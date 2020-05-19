@@ -6,14 +6,16 @@ using System.Collections.Generic;
 public class ItemUI : MonoBehaviour {
     public GameObject slot;
     private Text text;
-    private ItemDataBase idb;
+    private ItemDataBase idb = null;
 
     void Start(){
         idb = GameObject.FindGameObjectWithTag("ItemDataBase").GetComponent<ItemDataBase>();
     }
  
     void OnEnable() {
-        CreateSlot(idb.getItemList());
+        if(idb != null){
+            CreateSlot(idb.getItemList());
+        }
     }
 
     void OnDisable(){

@@ -8,7 +8,7 @@ using System.Linq;
 public class ItemSelect : MonoBehaviour
 {
     private KeyConfig kc;
-    private ItemDataBase idb;
+    private ItemDataBase idb = null;
     private List<Item> il;
     private GameObject ItemList;
     private Text ItemName;
@@ -57,9 +57,11 @@ public class ItemSelect : MonoBehaviour
     }
 
     public void OnEnable(){
-        il = idb.getItemList();
-        itemLength = idb.getItemCount();
-        ItemList = GameObject.FindGameObjectWithTag("ItemList");
+        if (idb != null){
+            il = idb.getItemList();
+            itemLength = idb.getItemCount();
+            ItemList = GameObject.FindGameObjectWithTag("ItemList");
+        }
     }
 
     public void OnDisable(){
