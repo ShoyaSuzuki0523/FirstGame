@@ -24,7 +24,9 @@ public class ItemFlag : MonoBehaviour
         idb = GameObject.FindGameObjectWithTag("ItemDataBase").GetComponent<ItemDataBase>();
         game_guide_object = GameObject.FindGameObjectWithTag("GameGuide");
 		Jimaku_object = GameObject.FindGameObjectWithTag("Jimaku");
-		js = Jimaku_object.GetComponent<JimakuScript> ();
+        if(Jimaku_object != null){
+		    js = Jimaku_object.GetComponent<JimakuScript> ();
+        }
     }
 
     async void Update() {

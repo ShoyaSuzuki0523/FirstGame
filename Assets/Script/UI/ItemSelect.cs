@@ -15,6 +15,7 @@ public class ItemSelect : MonoBehaviour
     private Text ItemDesc;
     [SerializeField] private int itemIndex = 0;
     private int itemLength = 0;
+    private bool first = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +39,10 @@ public class ItemSelect : MonoBehaviour
          }
 
         if(Input.GetKeyDown(kc.back) && itemIndex < itemLength - 1){
-            itemIndex += 1;
+            if(!first){
+                itemIndex += 1;
+            }
+            first = false;
             ItemName.text = $"{il[itemIndex].name}";
             ItemDesc.text = $"{il[itemIndex].desc}";
             for(int i = 0; i < itemLength; i++){
@@ -56,8 +60,17 @@ public class ItemSelect : MonoBehaviour
         // }
     }
 
+    void selectDown(){
+
+    }
+
+    void selectUp(){
+
+    }
+
     public void OnEnable(){
         if (idb != null){
+            first = true;
             il = idb.getItemList();
             itemLength = idb.getItemCount();
             ItemList = GameObject.FindGameObjectWithTag("ItemList");
@@ -65,6 +78,7 @@ public class ItemSelect : MonoBehaviour
     }
 
     public void OnDisable(){
+        first = true;
         itemIndex = 0;
         ItemName.text = "";
         ItemDesc.text = "";

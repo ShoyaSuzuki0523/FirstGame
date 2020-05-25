@@ -25,24 +25,30 @@ public class DoorOpener : MonoBehaviour
         if (Input.GetKeyDown(kc.action) && isNear) {
             animator.SetBool("OPEN", !animator.GetBool("OPEN"));
             isOpen = !isOpen;
-            Text game_guide_text = game_guide_object.GetComponent<Text> ();
-            game_guide_text.text = state(isOpen);
+            if(game_guide_object != null){
+                Text game_guide_text = game_guide_object.GetComponent<Text> ();
+                game_guide_text.text = state(isOpen);
+            }
         }
     }
 
     void OnTriggerEnter(Collider col) {
         if (col.tag == "Player") {
             isNear = true;
-            Text game_guide_text = game_guide_object.GetComponent<Text> ();
-            game_guide_text.text = state(isOpen);
+            if(game_guide_object != null){
+                Text game_guide_text = game_guide_object.GetComponent<Text> ();
+                game_guide_text.text = state(isOpen);
+            }
         }
     }
  
     void OnTriggerExit(Collider col) {
         if (col.tag == "Player") {
             isNear = false;
-            Text game_guide_text = game_guide_object.GetComponent<Text> ();
-            game_guide_text.text = "";
+            if(game_guide_object != null){
+                Text game_guide_text = game_guide_object.GetComponent<Text> ();
+                game_guide_text.text = "";
+            }
         }
     }
     string state(bool isOpen){
