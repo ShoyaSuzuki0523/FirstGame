@@ -11,4 +11,9 @@ public class KeyConfig : MonoBehaviour
     public string run = "left shift";
     public string action = "space";
     public string menu = "e";
+
+    void Start()
+    {
+        
+    }
 }

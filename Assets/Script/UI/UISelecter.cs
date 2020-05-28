@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
-public class ItemSelect : MonoBehaviour
+public class UISelecter : MonoBehaviour
 {
     private KeyConfig kc;
     private ItemDataBase idb = null;
@@ -13,8 +13,8 @@ public class ItemSelect : MonoBehaviour
     private GameObject ItemList;
     private Text ItemName;
     private Text ItemDesc;
-    [SerializeField] private int itemIndex = 0;
-    private int itemLength = 0;
+    private int index = 0;
+    private int length = 0;
     private bool first = true;
     // Start is called before the first frame update
     void Start()
@@ -28,27 +28,32 @@ public class ItemSelect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(kc.forward) && itemIndex > 0){
-            itemIndex -= 1;
-            ItemName.text = $"{il[itemIndex].name}";
-            ItemDesc.text = $"{il[itemIndex].desc}";
-            for(int i = 0; i < itemLength; i++){
+        if(Input.GetKeyDown(kc.forward) && index >= 0){
+            if(first == true){
+                first = false;
+            }else{
+                index -= 1;
+            }
+            ItemName.text = $"{il[index].name}";
+            ItemDesc.text = $"{il[index].desc}";
+            for(int i = 0; i < length; i++){
                 ItemList.transform.GetChild(i).GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.39f);
             }
-            ItemList.transform.GetChild(itemIndex).GetComponent<Image>().color = new Color(1.0f, 0.92f, 0.016f, 0.39f);
-         }
+            ItemList.transform.GetChild(index).GetComponent<Image>().color = new Color(1.0f, 0.92f, 0.016f, 0.39f);
+        }
 
-        if(Input.GetKeyDown(kc.back) && itemIndex < itemLength - 1){
-            if(!first){
-                itemIndex += 1;
+        if(Input.GetKeyDown(kc.back) && index < length - 1){
+            if(first == true){
+                first = false;
+            }else{
+                index += 1;
             }
-            first = false;
-            ItemName.text = $"{il[itemIndex].name}";
-            ItemDesc.text = $"{il[itemIndex].desc}";
-            for(int i = 0; i < itemLength; i++){
+            ItemName.text = $"{il[index].name}";
+            ItemDesc.text = $"{il[index].desc}";
+            for(int i = 0; i < length; i++){
                 ItemList.transform.GetChild(i).GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.39f);
             }
-            ItemList.transform.GetChild(itemIndex).GetComponent<Image>().color = new Color(1f, 0.92f, 0.016f, 0.39f);
+            ItemList.transform.GetChild(index).GetComponent<Image>().color = new Color(1f, 0.92f, 0.016f, 0.39f);
         }
 
         // if(Input.GetKeyDown(kc.right)){
@@ -72,14 +77,14 @@ public class ItemSelect : MonoBehaviour
         if (idb != null){
             first = true;
             il = idb.getItemList();
-            itemLength = idb.getItemCount();
+            length = idb.getItemCount();
             ItemList = GameObject.FindGameObjectWithTag("ItemList");
         }
     }
 
     public void OnDisable(){
         first = true;
-        itemIndex = 0;
+        index = 0;
         ItemName.text = "";
         ItemDesc.text = "";
     }
