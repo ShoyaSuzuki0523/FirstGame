@@ -18,6 +18,7 @@ TagManager:
   - ItemName
   - ItemDesc
   - ItemList
+  - Enemy
   layers:
   - Default
   - TransparentFX

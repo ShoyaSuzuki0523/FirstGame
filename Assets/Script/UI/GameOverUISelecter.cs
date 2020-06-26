@@ -12,6 +12,7 @@ public class GameOverUISelecter : MonoBehaviour
     private int index = 0;
     private int length = 2;
     private bool first = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +22,7 @@ public class GameOverUISelecter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(kc.forward) && index >= 0){
+        if(Input.GetKeyDown(kc.forward) && index > 0){
             if(first == true){
                 first = false;
             }else{

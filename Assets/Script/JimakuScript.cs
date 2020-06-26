@@ -10,6 +10,9 @@ public class JimakuScript : MonoBehaviour
 	private Text Jimaku_text;
 	private bool isRunning = false;
 	private CharaMover CharaMover;
+    private GameObject Enemy;
+    private EnemyController EnemyController;
+    private UnityEngine.AI.NavMeshAgent ecnma;
 
 	public int text_speed = 50;
 
@@ -18,6 +21,9 @@ public class JimakuScript : MonoBehaviour
     {
         Jimaku_text = GetComponent<Text>();
 		CharaMover = GameObject.FindGameObjectWithTag("Player").GetComponent<CharaMover>();
+        Enemy = GameObject.FindGameObjectWithTag("Enemy");
+        EnemyController = Enemy.GetComponent<EnemyController>();
+        ecnma = Enemy.GetComponent<UnityEngine.AI.NavMeshAgent>();
     }
 
     // Update is called once per frame
@@ -25,11 +31,18 @@ public class JimakuScript : MonoBehaviour
     {
         if(Input.GetKeyDown("space") && !isRunning){
 			Jimaku_text.text = "";
+            CharaMover.enabled = true;
+            EnemyController.enabled = true;
+            ecnma.enabled = true;
 		}
     }
 
     async public void JimakuText(string contents){
 		isRunning = true;
+
+        CharaMover.enabled = false;
+        EnemyController.enabled = false;
+        ecnma.enabled = false;
 
         foreach(var t in contents){
             Jimaku_text.text += t;

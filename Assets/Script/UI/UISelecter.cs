@@ -28,18 +28,13 @@ public class UISelecter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(kc.forward) && index >= 0){
+        if(Input.GetKeyDown(kc.forward) && index > 0){
             if(first == true){
                 first = false;
             }else{
                 index -= 1;
             }
-            ItemName.text = $"{il[index].name}";
-            ItemDesc.text = $"{il[index].desc}";
-            for(int i = 0; i < length; i++){
-                ItemList.transform.GetChild(i).GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.39f);
-            }
-            ItemList.transform.GetChild(index).GetComponent<Image>().color = new Color(1.0f, 0.92f, 0.016f, 0.39f);
+            select(index);
         }
 
         if(Input.GetKeyDown(kc.back) && index < length - 1){
@@ -48,12 +43,7 @@ public class UISelecter : MonoBehaviour
             }else{
                 index += 1;
             }
-            ItemName.text = $"{il[index].name}";
-            ItemDesc.text = $"{il[index].desc}";
-            for(int i = 0; i < length; i++){
-                ItemList.transform.GetChild(i).GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.39f);
-            }
-            ItemList.transform.GetChild(index).GetComponent<Image>().color = new Color(1f, 0.92f, 0.016f, 0.39f);
+            select(index);
         }
 
         // if(Input.GetKeyDown(kc.right)){
@@ -65,12 +55,13 @@ public class UISelecter : MonoBehaviour
         // }
     }
 
-    void selectDown(){
-
-    }
-
-    void selectUp(){
-
+    void select(int index){
+        ItemName.text = $"{il[index].name}";
+        ItemDesc.text = $"{il[index].desc}";
+        for(int i = 0; i < length; i++){
+            ItemList.transform.GetChild(i).GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.39f);
+        }
+        ItemList.transform.GetChild(index).GetComponent<Image>().color = new Color(1f, 0.92f, 0.016f, 0.39f);
     }
 
     public void OnEnable(){

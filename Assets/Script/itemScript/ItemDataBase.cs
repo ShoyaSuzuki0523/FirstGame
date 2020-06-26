@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class ItemDataBase : MonoBehaviour
 {
-    public List<Item> items = new List<Item>();
+    [SerializeField] private List<Item> items = new List<Item>();
     private int ItemCount = 0;
 
    void Start()
